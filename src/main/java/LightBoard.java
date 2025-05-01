@@ -1,7 +1,6 @@
 public class LightBoard
 {
-  /** The lights on the board, where true represents on and false represents off.
-   */
+  /** The lights on the board, where true represents on and false represents off. */
   private boolean[][] lights;
 
   /** Constructs a LightBoard object having numRows rows and numCols columns.
@@ -12,12 +11,10 @@ public class LightBoard
   {
     lights = new boolean[numRows][numCols];
 
-    for(int r = 0; r < lights.length; r++)
-        for(int c = 0; c < lights[0].length; c++)
-            if(Math.random() <= 0.4)
-                lights[r][c] = true;
-}
-
+    for (int r = 0; r < lights.length; r++)
+      for (int c = 0; c < lights[0].length; c++)
+        if (Math.random() <= 0.4)
+          lights[r][c] = true;
   }
 
   /** Evaluates a light in row index row and column index col and returns a status
@@ -25,34 +22,33 @@ public class LightBoard
    *  Precondition: row and col are valid indexes in lights.
    */
   public boolean evaluateLight(int row, int col)
-{
+  {
     int onInColumn = 0;
 
-    for(int r = 0; r < lights.length; r++)
-        if(lights[r][col])
-            onInColumn++;
+    for (int r = 0; r < lights.length; r++)
+      if (lights[r][col])
+        onInColumn++;
 
-    if(lights[row][col])
+    if (lights[row][col])
     {
-        if(onInColumn % 2 == 0)
-            return false;
+      if (onInColumn % 2 == 0)
+        return false;
     }
     else
     {
-        if(onInColumn % 3 == 0)
-            return true;
+      if (onInColumn % 3 == 0)
+        return true;
     }
 
     return lights[row][col];
-}
-   
- 
   }
+
   public boolean[][] getLights()
   {
     return lights;
   }
-  //used for testing
+
+  // used for testing
   public String toString()
   {
     String s = "";
@@ -67,5 +63,4 @@ public class LightBoard
     }
     return s;
   }
-  
 }
